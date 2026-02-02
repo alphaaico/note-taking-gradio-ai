@@ -19,5 +19,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://alpha-ai:$HF_TOKEN@huggingface.co/spaces/alpha-ai/claude-made-gradio-note
+          git remote add hf https://hf_user:$HF_TOKEN@huggingface.co/spaces/alpha-ai/claude-made-gradio-note
           git push --force hf main
