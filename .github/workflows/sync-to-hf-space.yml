@@ -1,0 +1,21 @@
+name: Sync to Hugging Face Space
+on:
+  push:
+    branches: [main]
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Push to Hugging Face Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: git push https://alpha-ai:$HF_TOKEN@huggingface.co/spaces/alpha-ai/claude-made-gradio-note main
