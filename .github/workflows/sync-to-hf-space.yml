@@ -19,11 +19,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          set -e
-          # URL-encode the HF token to avoid malformed URL errors if the token contains special characters
-          encoded_token=$(python - <<'PY'
-import os, urllib.parse
-print(urllib.parse.quote(os.environ['HF_TOKEN'], safe=''))
-PY
-)
-          git push https://${encoded_token}@huggingface.co/spaces/alpha-ai/claude-made-gradio-note.git HEAD:main --force
+          git remote add hf https://alpha-ai:$HF_TOKEN@huggingface.co/spaces/alpha-ai/claude-made-gradio-note
+          git push --force hf main
