@@ -738,7 +738,7 @@ def build_app():
             with gr.Tab("Todos", id="todos-tab"):
                 gr.Markdown("*All your extracted to-do items, organized as cards. Use the todo ID shown on each card to toggle it.*")
                 with gr.Row():
-                    todo_id_input = gr.Number(label="Todo ID", precision=0, scale=1)
+                    todo_id_input = gr.Textbox(label="Todo ID", placeholder="Enter todo ID number", scale=1)
                     toggle_btn = gr.Button("Toggle Done", variant="secondary", size="sm", scale=1)
                 todos_html = gr.HTML(
                     value="<div style='text-align:center;padding:40px;color:#6b7b8d;'>No todos yet.</div>",
@@ -833,7 +833,7 @@ Built by **[Alpha AI](https://www.alphaai.biz)** — Intelligent solutions for t
 # ---------------------------------------------------------------------------
 
 init_db()
+demo = build_app()
 
 if __name__ == "__main__":
-    app = build_app()
-    app.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, ssr_mode=False)
