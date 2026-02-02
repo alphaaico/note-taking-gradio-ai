@@ -605,10 +605,14 @@ footer { display: none !important; }
 #notes-display, #todos-display, #reminders-display, #workflows-display {
     min-height: 200px;
 }
-.dark input, .dark textarea {
+.dark input[type="text"], .dark input[type="password"], .dark input[type="number"], .dark textarea {
     background: #1b2838 !important;
     border-color: #2a3f5f !important;
     color: #d0d0d0 !important;
+}
+.dark input[type="radio"] {
+    accent-color: #7ec8e3 !important;
+    cursor: pointer !important;
 }
 .dark .block {
     background: #0f1d2e !important;
